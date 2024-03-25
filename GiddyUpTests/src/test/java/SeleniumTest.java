@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class SeleniumTest {
     private final WebDriver driver= new ChromeDriver();
     @Test
-    public void testExample() {
+    public void testMainPage() {
          driver.get("https://giddyup.io");
          boolean isDisplayed = driver.findElement(By.cssSelector("a[class='rm-anchor'] img[class='img-fluid']")).isDisplayed();
          assert isDisplayed : "Element is not Displayed";
