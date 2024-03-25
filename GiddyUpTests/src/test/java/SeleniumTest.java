@@ -1,28 +1,19 @@
-import org.testng.Assert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class SeleniumTest {
-    private WebDriver driver;
-
-    @BeforeMethod
-    public void setUp() {
-
-        System.setProperty("webdriver.chrome.driver", "/giddyup/GiddyUpTests/src/test/resources");
-        driver = new ChromeDriver();
-    }
-
+    private final WebDriver driver= new ChromeDriver();
     @Test
     public void testExample() {
          driver.get("https://giddyup.io");
-         // Add assertions or interactions
+         boolean isDisplayed = driver.findElement(By.cssSelector("a[class='rm-anchor'] img[class='img-fluid']")).isDisplayed();
+         assert isDisplayed : "Element is not Displayed";
     }
-
     @AfterMethod
     public void tearDown() {
-        if (driver != null) {
             driver.quit();
-        }
     }
 }
